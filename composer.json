@@ -1,9 +1,9 @@
 {
-  "name": "ankalagon/viesAddressFormatter",
+  "name": "ankalagon/vies-address-formatter",
   "type": "library",
   "description": "Library to format data from VIES service (http://ec.europa.eu/taxation_customs/vies/?locale=en)",
   "license": "MIT",
-  "keywords": ["address","addressing","VIES","VIES VAT"],
+  "keywords": ["address", "addressing", "VIES", "VIES VAT", "postal code"],
   "authors": [ {
       "name": "Piotr Suszalski",
       "email": "piotr@suszalski.pl"
