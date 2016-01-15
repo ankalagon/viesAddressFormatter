@@ -1,0 +1,19 @@
+{
+  "name": "ankalagon/viesAddressFormatter",
+  "type": "library",
+  "description": "Library to format data from VIES service (http://ec.europa.eu/taxation_customs/vies/?locale=en)",
+  "license": "MIT",
+  "keywords": ["address","addressing","VIES","VIES VAT"],
+  "authors": [ {
+      "name": "Piotr Suszalski",
+      "email": "piotr@suszalski.pl"
+  } ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "autoload": {
+      "psr-4": {
+        "ankalagon\\viesAddressFormatter\\": "src"
+        }
+    }
+}
