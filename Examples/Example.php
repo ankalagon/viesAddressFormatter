@@ -14,7 +14,7 @@ if ((!$loader = includeIfExists(__DIR__."/../vendor/autoload.php")) && (!$loader
 
 function humanReadable($addressLine, $result) {
     echo "AddressLine: ".str_replace("\n", '\n', $addressLine).PHP_EOL;
-    echo "Result: ".print_r($result, true).PHP_EOL;
+    echo "Result: ".var_export($result, true).PHP_EOL;
 }
 
 $examples = array(
