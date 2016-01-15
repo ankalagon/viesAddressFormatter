@@ -1,9 +1,14 @@
-Serwis do formatowania adresów pobranych z VIES'ia, problemem jest to że często są w jednej linii i są za długie. Ta klasa próbuje sobie z tym poradzić.
+Service can recognize ``postal_code``, ``city`` and ``address`` (rest of address line) from address provided by VIES service (http://ec.europa.eu/taxation_customs/vies/?locale=en).
 
-W wyniku dostajemy tablicę z podziałem na ``city``, ``address`` oraz ``code`` np:
+Example results:
+| IsoCode2 | Address | Output |
+|---|---|---|
+| GB | C/O BMW UK GROUPTAX FR-3-UK SUMMIT ONE SUMMIT AVENUE\nFARNBOROUGH\nGU14 0FB |   |
+| GB  | 28-29 THE BROADWAY\nEALING\nLONDON\n\nW5 2NP | |
+| GB  | 254 BANNERDALE ROAD\nSHEFFIELD\nS11 9FE | |
 
 ```
-AL. JERZEGO WASZYNGTONA 45/51 04-008 WARSZAWA
+
 
 Array
 (
