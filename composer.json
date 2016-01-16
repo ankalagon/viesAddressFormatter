@@ -3,7 +3,7 @@
   "type": "library",
   "description": "Library to format data from VIES service (http://ec.europa.eu/taxation_customs/vies/?locale=en)",
   "license": "MIT",
-  "keywords": ["address", "addressing", "VIES", "VIES VAT", "postal code"],
+  "keywords": ["address", "addressing", "VIES", "postal code", "postal code recognition"],
   "authors": [ {
       "name": "Piotr Suszalski",
       "email": "piotr@suszalski.pl"

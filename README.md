@@ -45,7 +45,7 @@ Array (
 )
 ```
 
-Example address line recognizion:
+Example address line recognizion
 ------------
 
 | Iso Code  | Address line | Return data |
@@ -65,3 +65,8 @@ Example address line recognizion:
 | PL | KORNELA UJEJSKIEGO 12 M7<br>30-102 KRAKÓW | Array (<br>    &nbsp;&nbsp;&nbsp;&nbsp;[city] => Kraków<br>    &nbsp;&nbsp;&nbsp;&nbsp;[postal_code] => 30-102<br>    &nbsp;&nbsp;&nbsp;&nbsp;[address] => Kornela Ujejskiego 12 M7<br>)<br> |
 | PL | AL. 29 LISTOPADA 155C<br>31-406 KRAKów | Array (<br>    &nbsp;&nbsp;&nbsp;&nbsp;[city] => Kraków<br>    &nbsp;&nbsp;&nbsp;&nbsp;[postal_code] => 31-406<br>    &nbsp;&nbsp;&nbsp;&nbsp;[address] => Al. 29 Listopada 155c<br>)<br> |
 | PL | AL. JERZEGO WASZYNGTONA 45/51<br>04-008 WARSZAWA | Array (<br>    &nbsp;&nbsp;&nbsp;&nbsp;[city] => Warszawa<br>    &nbsp;&nbsp;&nbsp;&nbsp;[postal_code] => 04-008<br>    &nbsp;&nbsp;&nbsp;&nbsp;[address] => Al. Jerzego Waszyngtona 45/51<br>)<br> |
+
+Thanks to
+------------
+
+Special thanks to Matthew Bednarski for ``postal-code.json`` library (https://gist.github.com/matthewbednarski/4d15c7f50258b82e2d7e). I use it (with small modfications) in this project.
