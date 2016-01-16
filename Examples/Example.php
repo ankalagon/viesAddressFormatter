@@ -12,9 +12,12 @@ if ((!$loader = includeIfExists(__DIR__."/../vendor/autoload.php")) && (!$loader
         "php composer.phar install".PHP_EOL);
 }
 
-function humanReadable($addressLine, $result) {
+function humanReadable($addressLine, $result, $iso) {
     echo "AddressLine: ".str_replace("\n", '\n', $addressLine).PHP_EOL;
-    echo "Result: ".var_export($result, true).PHP_EOL;
+    echo "Result: ".print_r($result, true).PHP_EOL;
+
+    //markdown table output
+    //echo '| '.$iso.' | '.str_replace("\n", '<br>', $addressLine).' | '.str_replace("\n", '<br>', print_r($result, true)).' | '.PHP_EOL;
 }
 
 $examples = array(
@@ -22,7 +25,7 @@ $examples = array(
     array("PL", "AL. 29 LISTOPADA 155C\n31-406 KRAKów"),
     array("PL", "AL. JERZEGO WASZYNGTONA 45/51\n04-008 WARSZAWA"),
     array("GB", "C/O BMW UK GROUPTAX FR-3-UK SUMMIT ONE SUMMIT AVENUE\nFARNBOROUGH\nGU14 0FB"),
-    array("GB", "28-29 THE BROADWAY EALING LONDON W5 2NP"),
+    array("GB", "28-29 THE BROADWAY EALING\nLONDON\nW5 2NP"),
     array("GB", "28-29 THE BROADWAY\nEALING\nLONDON\n\nW5 2NP"),
     array("GB", "10 THE GRANGEWAY\nGRANGE PARK\nLONDON\nN21 2HA"),
     array("GB", "254 BANNERDALE ROAD\nSHEFFIELD\nS11 9FE"),
@@ -39,11 +42,12 @@ $examples = array(
 
 );
 
-foreach ($examples as $example) {
-    $formatter = new Ankalagon\ViesAddressFormatter\ViesAddressFormatter($example[0]);
-    $result = $formatter->getFormatedData($example[1]);
+use Ankalagon\ViesAddressFormatter\ViesFormatter;
 
-    echo humanReadable($example[1], $result);
+foreach ($examples as $example) {
+    $result = ViesFormatter::recognize($example[0], $example[1]);
+
+    echo humanReadable($example[1], $result, $example[0]);
 }
 
 

@@ -2,7 +2,11 @@
 
 namespace Ankalagon\ViesAddressFormatter;
 
-class ViesAddressFormatter
+/**
+ * Class ViesObjectFormatter
+ * @package Ankalagon\ViesAddressFormatter
+ */
+class ViesObjectFormatter
 {
     /**
      * @var string Iso code to recognize
@@ -90,9 +94,9 @@ class ViesAddressFormatter
         }
 
         return array(
-            'city'    => $this->_format($city),
-            'code'    => trim($code),
-            'address' => $this->_format($address),
+            'city'        => $this->_format($city),
+            'postal_code' => trim($code),
+            'address'     => $this->_format($address),
         );
     }
 
