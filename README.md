@@ -13,7 +13,7 @@ Update your composer.json and run `composer update`
 ``` json
 {
     "require": {
-        "ankalagon/vies-address-formatter": "dev-master"
+        "ankalagon/vies-address-formatter": "^1.0"
     }
 }
 ```
