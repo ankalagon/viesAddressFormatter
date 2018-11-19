@@ -3,7 +3,11 @@ Service can recognize ``postal_code``, ``city`` and ``address`` (rest of address
 Requirements
 ------------
 
-* PHP5.3
+* PHP5.3 and above
+
+or
+
+* PHP7.0 and above
 
 Installation
 ------------

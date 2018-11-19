@@ -11,17 +11,17 @@ class ViesObjectFormatter
     /**
      * @var string Iso code to recognize
      */
-    private $_isoCode = '';
+    private $isoCode = '';
 
     /**
      * @var array   definitions of countries
      */
-    private $_allDefinitions = '';
+    private $allDefinitions = [];
 
     /**
      * @var array   actual definition for selected country
      */
-    private $_definition = '';
+    private $definition = [];
 
     /**
      * @param string $isoCode
@@ -39,13 +39,13 @@ class ViesObjectFormatter
      */
     public function setIsoCode($isoCode)
     {
-        $this->_isoCode = trim($isoCode);
+        $this->isoCode = trim($isoCode);
 
-        if (strlen($this->_isoCode) != 2) {
+        if (strlen($this->isoCode) != 2) {
             throw new \Exception('IsoCode required to initialize '.__METHOD__.' object');
         }
 
-        $this->_setDefinition();
+        $this->setDefinition();
     }
 
     /**
@@ -60,11 +60,11 @@ class ViesObjectFormatter
 
         $address = $addressLine;
 
-        if (is_array($this->_definition)) {
-            foreach ($this->_definition as $pattern) {
+        if (is_array($this->definition)) {
+            foreach ($this->definition as $pattern) {
                 $pattern = '/('.$pattern.')(.*)/ism';
 
-                if ($this->_isoCode == 'GB' && strpos($addressLine, "\n") !== false) {
+                if ($this->isoCode == 'GB' && strpos($addressLine, "\n") !== false) {
                     foreach (explode("\n", $addressLine) as $row) {
                         preg_match($pattern, $row, $result);
 
@@ -94,32 +94,32 @@ class ViesObjectFormatter
         }
 
         return array(
-            'city'        => $this->_format($city),
+            'city'        => $this->format($city),
             'postal_code' => trim($code),
-            'address'     => $this->_format($address),
+            'address'     => $this->format($address),
         );
     }
 
-    private function _setDefinition()
+    private function setDefinition()
     {
-        if ($this->_allDefinitions == false) {
+        if ($this->allDefinitions == false) {
             $definitions = json_decode(file_get_contents(__DIR__.'/postalcodes.json'), true);
             foreach ($definitions as $definition) {
                 //can be multiple definitions for one country
                 $definition['Regex'] = trim($definition['Regex'], ' ^$');
-                $this->_allDefinitions[$definition['ISO']][] = $definition['Regex'];
+                $this->allDefinitions[$definition['ISO']][] = $definition['Regex'];
             }
         }
 
-        if (isset($this->_allDefinitions[$this->_isoCode])) {
-            $this->_definition = $this->_allDefinitions[$this->_isoCode];
+        if (isset($this->allDefinitions[$this->isoCode])) {
+            $this->definition = $this->allDefinitions[$this->isoCode];
         } else {
-            $this->_definition = false;
-            syslog(LOG_WARNING, '[FM\AddressFormatter] not recognize country, isocode = "'.$this->_isoCode.'"');
+            $this->definition = false;
+            syslog(LOG_WARNING, '[FM\AddressFormatter] not recognize country, isocode = "'.$this->isoCode.'"');
         }
     }
 
-    private function _format($string)
+    private function format($string)
     {
         return trim(ucwords(mb_strtolower($string, 'UTF-8')));
     }
